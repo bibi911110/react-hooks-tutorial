@@ -20,38 +20,37 @@ const products = [
   }
 ];
 
+
+function getTotal(cart) {
+  return cart.reduce((totalCost, item) => totalCost + item.price, 0);
+}
+
 function cartReducer(state, action) {
   switch(action.type) {
     case 'add':
-      return [...state, action.product.name];
+      return [...state, action.product];
     case 'remove':
+      const productIndex = state.findIndex(item => item.name === action.product.name);
+      if(productIndex < 0) {
+        return state;
+      }
       const update = [...state];
-      update.splice(update.indexOf(action.product.name), 1);
-      return update;
+      update.splice(productIndex, 1)
+      return update
     default:
       return state;
   }
 }
 
-function totalReducer(state, action) {
-  if(action.type === 'add') {
-    return state + action.product.price;
-  }
-  return state - action.product.price
-}
-
 export default function Product() {
   const [cart, setCart] = useReducer(cartReducer, []);
-  const [total, setTotal] = useReducer(totalReducer, 0);
 
   function add(product) {
     setCart({ product, type: 'add' });
-    setTotal({ product, type: 'add' });
   }
 
   function remove(product) {
     setCart({ product, type: 'remove' });
-    setTotal({ product, type: 'remove' });
   }
 
   return(
@@ -59,8 +58,9 @@ export default function Product() {
       <div>
         Shopping Cart: {cart.length} total items.
       </div>
-      <div>Total: {total}</div>
-        <div>
+      <div>Total: {getTotal(cart)}</div>
+
+      <div>
         {products.map(product => (
           <div key={product.name}>
             <div className="product">
