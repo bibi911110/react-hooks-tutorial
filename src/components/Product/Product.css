@@ -9,5 +9,6 @@
 
 .wrapper button {
   font-size: 20px;
-  background: none;
+  background-color: rgb(207, 138, 33);
+  margin: 10px;
 }
