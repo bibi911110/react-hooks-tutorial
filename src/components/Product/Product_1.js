@@ -10,7 +10,8 @@ export default function Product() {
       <div>Total: 0</div>
 
       <div className="product"><span role="img" aria-label="gitar">🎸</span></div>
-      <button>Add</button> <button>Remove</button>
+      <button>+</button> 
+      <button>-</button>
     </div>
   )
 }

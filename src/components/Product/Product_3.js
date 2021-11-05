@@ -49,8 +49,8 @@ export default function Product() {
             <div className="product">
               <span role="img" aria-label={product.name}>{product.emoji}</span>
             </div>
-            <button onClick={() => add(product)}>Add</button>
-            <button>Remove</button>
+            <button onClick={() => add(product)}>+</button>
+            <button>-</button>
           </div>
         ))}
       </div>
