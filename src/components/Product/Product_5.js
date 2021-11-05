@@ -20,6 +20,9 @@ const products = [
   }
 ];
 
+function getAmountPerProduct(cart, productName) {
+    return cart.filter(item => item.name === productName).length;
+}
 
 function getTotal(cart) {
   return cart.reduce((totalCost, item) => totalCost + item.price, 0);
@@ -55,22 +58,29 @@ export default function Product() {
 
   return(
     <div className="wrapper">
-      <div>
-        Shopping Cart: {cart.length} total items.
+      <div className="shoppingcart">
+        <strong>Shopping Cart</strong>
+        <div>
+           {cart.length} total items
+        </div>
+        <div>Total price: {getTotal(cart)} Euro</div>
       </div>
-      <div>Total: {getTotal(cart)}</div>
-
       <div>
         {products.map(product => (
           <div key={product.name}>
             <div className="product">
-              <span role="img" aria-label={product.name}>{product.emoji}</span>
+                <span role="img" aria-label={product.name}>{product.emoji}</span>
             </div>
-            <button onClick={() => add(product)}>Add</button>
-            <button onClick={() => remove(product)}>Remove</button>
+            <div className="selectproduct">
+              <button onClick={() => add(product)}>+</button><b>{getAmountPerProduct(cart, product.name)}</b>
+              <button onClick={() => remove(product)}>-</button>
+            </div>
           </div>
         ))}
       </div>
+      <br></br>
+      <div className="checkout"><button>Checkout</button></div>
+      <br></br>
     </div>
   )
 }

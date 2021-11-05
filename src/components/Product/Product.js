@@ -68,12 +68,10 @@ export default function Product() {
       <div>
         {products.map(product => (
           <div key={product.name}>
-            <div>
-              <div className="product">
+            <div className="product">
                 <span role="img" aria-label={product.name}>{product.emoji}</span>
-              </div>
             </div>
-            <div className="counter">
+            <div className="selectproduct">
               <button onClick={() => add(product)}>+</button><b>{getAmountPerProduct(cart, product.name)}</b>
               <button onClick={() => remove(product)}>-</button>
             </div>
