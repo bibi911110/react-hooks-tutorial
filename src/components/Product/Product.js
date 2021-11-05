@@ -59,9 +59,9 @@ export default function Product() {
   return(
     <div className="wrapper">
       <div className="shoppingcart">
-         <b>Shopping Cart</b>
+        <strong>Shopping Cart</strong>
         <div>
-           {cart.length} total items.
+           {cart.length} total items
         </div>
         <div>Total price: {getTotal(cart)} Euro</div>
       </div>
@@ -69,19 +69,20 @@ export default function Product() {
         {products.map(product => (
           <div key={product.name}>
             <div>
-            <div className="product">
-              <span role="img" aria-label={product.name}>{product.emoji}</span>
-              
-            </div>
-            
+              <div className="product">
+                <span role="img" aria-label={product.name}>{product.emoji}</span>
+              </div>
             </div>
             <div className="counter">
-              <button onClick={() => add(product)}>+</button>{getAmountPerProduct(cart, product.name)}
+              <button onClick={() => add(product)}>+</button><b>{getAmountPerProduct(cart, product.name)}</b>
               <button onClick={() => remove(product)}>-</button>
             </div>
           </div>
         ))}
       </div>
+      <br></br>
+      <div className="checkout"><button>Checkout</button></div>
+      <br></br>
     </div>
   )
 }
