@@ -1,16 +1,16 @@
 [
   {
-    "emoji": "",
+    "emoji": "\uD83C\uDFB8",
     "name": "gitar",
     "price": 500
   },
   {
-    "emoji": "",
+    "emoji": "\uD83C\uDFB7",
     "name": "saxophone",
     "price": 1200
   },
   {
-    "emoji": "",
+    "emoji": "\uD83E\uDD41",
     "name": "drum",
     "price": 250
   }
