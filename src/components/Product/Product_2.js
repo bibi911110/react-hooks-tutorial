@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-import './Product.css';
 
+import React, { useState } from 'react';
 
 const products = [
   {
-    emoji: '\uD83C\uDFB8',
-    name: 'gitar',
+    emoji: "\uD83E\uDD16",
+    name: 'robot',
     price: 500
   },
   {
-    emoji: '\uD83C\uDFB7',
-    name: 'saxophone',
-    price: 1200,
+    emoji: "\uD83E\uDDBF",
+    name: 'mechanical leg',
+    price: 3000,
   },
-  {
-    emoji: '\uD83E\uDD41',
-    name: 'drum',
-    price: 250
-  }
 ];
 
 export default function Product() {
@@ -31,10 +25,8 @@ export default function Product() {
 
   return(
     <div className="wrapper">
-      <div>
-        Shopping Cart: {cart.length} total items.
-      </div>
-      <div>Total: {total}</div>
+      <div>Shopping Cart: {cart.length} total items.</div>
+      <div>Total price: {total}</div>
         <div>
         {products.map(product => (
           <div key={product.name}>
@@ -49,3 +41,4 @@ export default function Product() {
     </div>
   )
 }
+

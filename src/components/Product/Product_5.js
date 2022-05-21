@@ -4,20 +4,20 @@ import './Product.css';
 
 const products = [
   {
-    emoji: '\uD83C\uDFB8',
-    name: 'gitar',
-    price: 500
+    emoji: "\uD83E\uDD16",
+    name: 'robot',
+    price: 5
   },
   {
-    emoji: '\uD83C\uDFB7',
-    name: 'saxophone',
-    price: 1200,
+    emoji: "\uD83E\uDDBF",
+    name: 'mechanical leg',
+    price: 120,
   },
   {
-    emoji: '\uD83E\uDD41',
-    name: 'drum',
-    price: 250
-  }
+    emoji: "\uD83E\uDDBE",
+    name: 'mechanical arm',
+    price: 5
+  },
 ];
 
 function getAmountPerProduct(cart, productName) {
@@ -49,11 +49,13 @@ export default function Product() {
   const [cart, setCart] = useReducer(cartReducer, []);
 
   function add(product) {
-    setCart({ product, type: 'add' });
+    const action = { product, type: 'add' };
+    setCart(action);
   }
 
   function remove(product) {
-    setCart({ product, type: 'remove' });
+    const action = { product, type: 'remove' };
+    setCart(action);
   }
 
   return(
