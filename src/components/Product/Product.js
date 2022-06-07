@@ -1,7 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import { fetchProductData } from '../../services/ProductService';
 import './Product.css';
-import useStatesHooks from './useStatesHooks';
 
 function getAmountPerProduct(cart, productName) {
     return cart.filter(item => item.name === productName).length;
@@ -11,13 +10,31 @@ function getTotal(cart) {
   return cart.reduce((totalCost, item) => totalCost + item.price, 0);
 }
 
+function cartReducer(state, action) {
+  switch(action.type) {
+    case 'add':
+      return [...state, action.product];
+    case 'remove':
+      const productIndex = state.findIndex(item => item.name === action.product.name);
+      if(productIndex < 0) {
+        return state;
+      }
+      const update = [...state];
+      update.splice(productIndex, 1)
+      return update
+    default:
+      return state;
+  }
+}
+
 export default function Product() {
-  const { cart, products, setCart, setProducts } = useStatesHooks();
+  const [cart, setCart] = useReducer(cartReducer, []);
   
   useEffect(() => {
      setProducts(fetchProductData())
   }, []);
   
+  const [products, setProducts] = useState([]);
   
   function add(product) {
     const action = { product, type: 'add' };

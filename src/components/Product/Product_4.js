@@ -4,20 +4,20 @@ import './Product.css';
 
 const products = [
   {
-    emoji: '\uD83C\uDFB8',
-    name: 'gitar',
+    emoji: "\uD83E\uDD16",
+    name: 'robot',
     price: 500
   },
   {
-    emoji: '\uD83C\uDFB7',
-    name: 'saxophone',
-    price: 1200,
+    emoji: "\uD83E\uDDBF",
+    name: 'mechanical leg',
+    price: 3000,
   },
   {
-    emoji: '\uD83E\uDD41',
-    name: 'drum',
-    price: 250
-  }
+    emoji: "\uD83E\uDDBE",
+    name: 'mechanical arm',
+    price: 2000
+  },
 ];
 
 function cartReducer(state, action) {
