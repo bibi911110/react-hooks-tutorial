@@ -37,11 +37,13 @@ export default function Product() {
   const [products, setProducts] = useState([]);
   
   function add(product) {
-    setCart({ product, type: 'add' });
+    const action = { product, type: 'add' };
+    setCart(action);
   }
 
   function remove(product) {
-    setCart({ product, type: 'remove' });
+    const action = { product, type: 'remove' };
+    setCart(action);
   }
 
   return(
